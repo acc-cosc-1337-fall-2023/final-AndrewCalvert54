@@ -2,6 +2,7 @@
 #define ROLL_H
 
 #include "die.h"
+#include <iostream>
 
 class Roll {
 public:
@@ -11,6 +12,9 @@ public:
     // Public member functions
     void roll_die();
     int roll_value() const;
+
+    // Overloaded << operator
+    friend std::ostream& operator<<(std::ostream& os, const Roll& roll);
 
 private:
     // Private member variables

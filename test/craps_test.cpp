@@ -2,6 +2,7 @@
 #include "catch.hpp"
 #include "die.h"
 #include "roll.h"
+#include "shooter.h"
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
@@ -31,5 +32,21 @@ TEST_CASE("Verify Roll Class", "[Roll]") {
             REQUIRE(value >= 2); // Assert value is greater than or equal to 2
             REQUIRE(value <= 12); // Assert value is less than or equal to 12
         }
+    }
+}
+
+TEST_CASE("Verify Shooter Class", "[Shooter]") {
+    SECTION("ThrowDieAndGetRoll") {
+        Die die1;
+        Die die2;
+        Shooter shooter;
+
+        for (int i = 0; i < 10; ++i) {
+            Roll* roll = shooter.throw_die(die1, die2);
+            int value = roll->roll_value();
+            REQUIRE((value >= 2 && value <= 12)); // Assert value is within the expected range
+        }
+
+        std::cout << shooter; // Print the rolls using the overloaded << operator
     }
 }

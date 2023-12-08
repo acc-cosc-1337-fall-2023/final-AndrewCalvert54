@@ -1,4 +1,5 @@
 #include "roll.h"
+#include <iostream>
 
 // Constructor
 Roll::Roll(Die& d1, Die& d2) : die1(d1), die2(d2), value(0) {}
@@ -13,4 +14,10 @@ void Roll::roll_die() {
 
 int Roll::roll_value() const {
     return value;
+}
+
+// Overloaded << operator
+std::ostream& operator<<(std::ostream& os, const Roll& roll) {
+    os << "Roll value: " << roll.value;
+    return os;
 }
