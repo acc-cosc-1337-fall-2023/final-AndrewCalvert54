@@ -1,21 +1,19 @@
 #ifndef SHOOTER_H
 #define SHOOTER_H
 
-#include <vector>
+#pragma once
 #include "roll.h"
-#include <iostream>
+#include <vector>
 
 class Shooter {
 public:
-    // Public member functions
+    ~Shooter(); // Destructor to clean up allocated Roll objects
+
     Roll* throw_die(Die& d1, Die& d2);
+
     friend std::ostream& operator<<(std::ostream& os, const Shooter& shooter);
 
-    // Destructor
-    ~Shooter();
-
 private:
-    // Private member variables
     std::vector<Roll*> rolls;
 };
 

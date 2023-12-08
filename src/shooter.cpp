@@ -3,8 +3,7 @@
 
 // Public member functions
 Roll* Shooter::throw_die(Die& d1, Die& d2) {
-    Roll* roll = new Roll(d1, d2);
-    roll->roll_die();
+    Roll* roll = new Roll(&d1, &d2);
     rolls.push_back(roll);
     return roll;
 }

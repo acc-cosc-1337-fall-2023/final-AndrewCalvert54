@@ -1,27 +1,27 @@
 #ifndef ROLL_H
 #define ROLL_H
 
+#pragma once
 #include "die.h"
 #include <iostream>
 
 class Roll {
 public:
-    // Constructor
-    Roll(Die& d1, Die& d2);
+    Roll(Die* d1, Die* d2);
 
-    // Public member functions
+    Roll(int rolledValue);
+
+
     void roll_die();
-    int roll_value() const;
-
-    // Overloaded << operator
-    friend std::ostream& operator<<(std::ostream& os, const Roll& roll);
+    int rolled_value() const;
 
 private:
-    // Private member variables
-    Die& die1; // Initialize in Roll constructor
-    Die& die2; // Initialize in Roll constructor
-    bool rolled{false}; // Initialize to false
-    int value; // Set to die1 + die2 rolled values
+    Die* die1;
+    Die* die2;
+    int value;
+    bool rolled;
+
+    friend std::ostream& operator<<(std::ostream& os, const Roll& roll);
 };
 
 #endif
